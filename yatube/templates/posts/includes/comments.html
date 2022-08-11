@@ -1,0 +1,33 @@
+{% load user_filters %}
+{% load static %}
+
+{% for comment in comments %}
+  <hr>
+  <div class="media mb-4">
+    <div class="media-body">
+      <h5 class="mt-0">
+        <a href="{% url 'posts:profile' comment.author.username %}">
+          {{ comment.author.username }}
+        </a>
+        {% if user == comment.author %}
+          <a href="{% url 'posts:comment_delete' comment.id %}">
+            <img
+              src="{% static 'img/fav/icon-trash-24x24.png' %}"
+              style="float:right"
+            >
+          </a>
+        {% endif %}
+      </h5>
+      <div class="row">
+        <div>
+          {{ comment.text }}
+        </div>
+        <div class="fw-light">
+          <span style="color:gray">
+            {{ comment.created }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endfor %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}
+  {{ page_title }}
+{% endblock %}
+
+{% block content %}
+  <h1>Ошибка 403</h1>
+  <p>Доступ к странице запрещен</p>
+  <a href="{% url 'posts:index' %}">Перейти на главную страницу</a>
+{% endblock %}

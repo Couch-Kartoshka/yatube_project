@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Войти
+{% endblock %}
+
+{% block content %}
+  {% include 'includes/forms.html' with form_title="Войти на сайт" submit_button="Войти" password_reset_button="Забыли пароль?" %}  
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  {{ page_title }}
+{% endblock %}
+
+{% block content %}
+  {% if request.resolver_match.view_name == 'posts:post_create' %}
+    {% include 'includes/forms.html' with form_title="Новый пост" submit_button="Добавить" %} 
+  {% else %}
+    {% include 'includes/forms.html' with form_title="Редактировать пост" submit_button="Сохранить" %}  
+  {% endif %}
+{% endblock %}

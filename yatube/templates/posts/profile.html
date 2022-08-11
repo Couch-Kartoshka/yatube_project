@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+
+{% block title %}
+  {{ page_title }}
+{% endblock %}
+
+{% block content %}
+  <div class="mb-5">
+    <div class="row">
+      <aside class="col-12 col-md-3">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            Всего постов: {{ page_obj.paginator.count }}
+          </li>
+          <li class="list-group-item">
+            Количество подписчиков: {{ author.following.count }}
+          </li>
+          <li class="list-group-item">
+            Количество подписок: {{ author.follower.count }}
+          </li>
+        </ul>
+      </aside>
+      <article class="col-12 col-md-8 text-center">
+        <h1>Все посты пользователя {{ author.get_full_name }}</h1>
+        <h1>(@{{ author.username }})</h1>
+      </article>
+    </div>
+    <br>
+    {% if user != author %}
+      {% if following  %}
+        <a
+          class="btn btn-light"
+        >
+          Вы подписаны на автора
+        </a>
+        <a
+          class="btn btn-outline-danger"
+          href="{% url 'posts:profile_unfollow' author.username %}" role="button"
+        >
+          Отписаться
+        </a>
+      {% else %}
+        <a
+          class="btn btn-light"
+        >
+          Вы не подписаны на автора
+        </a>
+        <a
+          class="btn btn-outline-success"
+          href="{% url 'posts:profile_follow' author.username %}" role="button"
+        >
+          Подписаться
+        </a>
+      {% endif %}
+    {% endif %}
+    <br>
+  </div>
+  {% for post in page_obj %}
+    <article>
+      <ul>
+        <li>
+          Дата публикации: {{ post.pub_date|date:"d E Y" }}
+        </li>
+        {% if post.group %}
+        <li>
+          Группа:
+          <a href="{% url 'posts:group_list' post.group.slug %}">
+            {{ post.group.title }}
+          </a>
+        </li>
+      {% endif %}
+      </ul>
+      {% thumbnail post.image "960x339" crop="center" upscale=True as im %}
+        <img class="card-img my-2" src="{{ im.url }}">
+      {% endthumbnail %}
+      <p>{{ post.text }}</p>
+      <a
+      class="btn btn-outline-secondary"
+      href="{% url 'posts:post_detail' post.id %}" role="button"
+      >
+        Подробная информация
+      </a>
+    </article>
+    {% if not forloop.last %}<hr>{% endif %}
+  {% endfor %} 
+  {% include 'posts/includes/paginator.html' %}
+{% endblock %}

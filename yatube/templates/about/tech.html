@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Технологии
+{% endblock %}
+
+{% block content %}
+  <h1>Технологии в проекте</h1>
+  <br>
+  <div class="row">
+    <p>Проект Yatube демонстрирует возможности одновременного использования различных технологий, представленных в списке ниже.</p>
+  </div>
+  <br>
+  <div class="row">
+    <div class="d-flex align-items-start">
+      <div class="nav flex-column nav-pills me-3" id="technology" role="tablist" aria-orientation="vertical">
+        <button class="nav-link active" id="django-tab" data-bs-toggle="pill" data-bs-target="#django" type="button" role="tab" aria-controls="django" aria-selected="true">Django</button>
+        <button class="nav-link" id="python-tab" data-bs-toggle="pill" data-bs-target="#python" type="button" role="tab" aria-controls="python" aria-selected="false">Python</button>
+        <button class="nav-link" id="bootstrap-tab" data-bs-toggle="pill" data-bs-target="#bootstrap" type="button" role="tab" aria-controls="bootstrap" aria-selected="false">Bootstrap</button>
+        <button class="nav-link" id="html-tab" data-bs-toggle="pill" data-bs-target="#html" type="button" role="tab" aria-controls="html" aria-selected="false">HTML</button>
+        <button class="nav-link" id="sql-tab" data-bs-toggle="pill" data-bs-target="#sql" type="button" role="tab" aria-controls="sql" aria-selected="false">SQL</button>
+      </div>
+      <div class="tab-content" id="technologyContent">
+        <div class="tab-pane fade show active" id="django" role="tabpanel" aria-labelledby="django-tab">
+          <p class="text-start mx-2">
+            Логика работы сайта, его структура и наполнение построены на основе веб-фреймворка Django, использующего шаблон проектирования MVC(Model-View-Controller).
+            Проект поддерживается организацией Django Software Foundation.
+          </p>
+        </div>
+        <div class="tab-pane fade" id="python" role="tabpanel" aria-labelledby="python-tab">
+          <p class="text-start mx-2">
+            Основный язык программирования, на котором написан проект - Python.  Это высокоуровневый язык программирования общего назначения с динамической строгой
+            типизацией и автоматическим управлением памятью,
+            ориентированный на повышение производительности разработчика, читаемости кода и его качества,
+            а также на обеспечение переносимости написанных на нём программ.
+          </p>
+        </div>
+        <div class="tab-pane fade" id="bootstrap" role="tabpanel" aria-labelledby="bootstrap-tab">
+          <p class="text-start mx-2">
+            Bootstrap - второй фреймворк, используемый в проекте и включающий в себя HTML- и CSS-шаблоны
+            оформления для типографики, веб-форм, кнопок, меток, блоков навигации и прочих компонентов
+            веб-интерфейса, включая JavaScript-расширения.
+          </p>
+        </div>
+        <div class="tab-pane fade" id="html" role="tabpanel" aria-labelledby="html-tab">
+          <p class="text-start mx-2">
+            HTML - стандартизированный язык разметки документов для просмотра веб-страниц в браузере.
+            Использован в качестве основного языка разметки при оформлении шаблонов данного проекта.
+          </p>
+        </div>
+        <div class="tab-pane fade" id="sql" role="tabpanel" aria-labelledby="sql-tab">
+          <p class="text-start mx-2">
+            В основе проекта лежит использование базы данных (по пользователям, постам, группам и пр.), обращение к которой осуществляется
+            с помощью языка SQL. Это декларативный язык программирования, применяемый для создания, модификации
+            и управления данными в реляционной базе данных, управляемой соответствующей системой управления базами данных.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
